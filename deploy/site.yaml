@@ -1,7 +1,14 @@
----
-- name: Deploy Node Application
-  hosts: tag_class_{{env}}-bbwebserver
-  remote_user: "{{remote_user}}"
-  sudo: yes
-  roles :
-    - tomcat
+- hosts: tag_class_{{env}}-bbwebserver
+  name: Deploy Backbase web
+  remote_user: '{{remote_user}}'
+  roles:
+  - role: tomcat
+    tags: [tomcat, backbase]
+    tomcat_base_port: 8000
+    tomcat_instance: backbase
+  sudo: true
+- hosts: tag_class_{{env}}-bbdbserver
+  name: Deploy MySQL
+  remote_user: '{{remote_user}}'
+  roles: [mysql]
+  sudo: true
