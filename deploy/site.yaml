@@ -2,6 +2,7 @@
   name: Deploy Backbase web
   remote_user: '{{remote_user}}'
   roles:
+  - create-user
   - role: tomcat
     tags: [tomcat, backbase]
     tomcat_base_port: 8000
@@ -11,5 +12,6 @@
   name: Deploy MySQL
   remote_user: '{{remote_user}}'
   roles: 
+    - create-user
     - role : mysql
   sudo: true
