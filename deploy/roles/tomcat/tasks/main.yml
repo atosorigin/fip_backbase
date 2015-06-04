@@ -19,7 +19,7 @@
 - name: Disable {{ tomcat_instance }} service
   service: name={{ tomcat_instance }} state=stopped enabled=no
   register: command_result
-  failed_when: "command_result|failed and 'no service' not in command_result.msg"
+  failed_when: "command_result|'service not found' or 'no service' not in command_result.msg"
 
 - name: remove any old tomcat instance 
   file: path={{tomcat_instance_dir}} state=absent
