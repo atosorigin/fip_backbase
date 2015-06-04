@@ -9,7 +9,6 @@
 
 - name: Install base software
   apt: name={{item}} state=present
-  environment: proxy_env
   with_items:
     - zip
     - openjdk-7-jdk
