@@ -10,5 +10,6 @@
 - hosts: tag_class_{{env}}-bbdbserver
   name: Deploy MySQL
   remote_user: '{{remote_user}}'
-  roles: mysql
+  roles: 
+    - role : mysql
   sudo: true
