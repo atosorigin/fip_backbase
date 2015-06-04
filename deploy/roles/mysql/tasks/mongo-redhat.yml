@@ -1,0 +1,5 @@
+---
+  - name: Install mySQL 
+    apt : name=python-mysqldb state=present
+  - name: Create backbase database
+    mysql_db: name=backbase state=present
