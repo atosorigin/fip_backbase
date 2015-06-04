@@ -2,7 +2,7 @@
   - name: Install MySQL
     apt: 
       name: "{{ item }}"
-      with_items:
+    with_items:
         - python-mysqldb
         - mysql-server
 
