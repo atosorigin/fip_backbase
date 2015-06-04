@@ -4,4 +4,6 @@ user: backbaseusr
 group: web
 owner: web
 home_dir: "/home/{{user}}"
+install_root: /var/www/backbase
+
 # The global variable file mongodb installation
