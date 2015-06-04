@@ -2,4 +2,5 @@
 port: 8080
 user: backbaseusr
 group: web
+owner: web
 # The global variable file mongodb installation
