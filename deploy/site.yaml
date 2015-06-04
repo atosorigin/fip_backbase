@@ -1,5 +1,7 @@
 - hosts: tag_class_{{env}}-bbwebserver
   name: Deploy Backbase web
+  vars_files:
+   - "vars/enc.yml"
   remote_user: '{{remote_user}}'
   roles:
   - create-user
@@ -10,6 +12,8 @@
   sudo: true
 - hosts: tag_class_{{env}}-bbdbserver
   name: Deploy MySQL
+  vars_files:
+   - "vars/enc.yml"
   remote_user: '{{remote_user}}'
   roles: 
     - create-user
