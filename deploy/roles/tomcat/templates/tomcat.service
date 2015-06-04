@@ -16,7 +16,7 @@ description "Tomcat Server {{tomcat_instance}}"
 
   
   # adapt paths:
-  # env JAVA_HOME=/usr/bin/java
+  env JAVA_HOME=/usr/bin/java
   env CATALINA_HOME={{tomcat_instance_dir}}
 
   # adapt java options to suit your needs:
