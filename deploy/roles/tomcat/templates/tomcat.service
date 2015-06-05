@@ -21,7 +21,7 @@ description "Tomcat Server {{tomcat_instance}}"
 
   # adapt java options to suit your needs:
 
-  env JAVA_OPTS="$JAVA_OPTS -Xmx512m -XX:MaxPermSize=256m -XX:+UseConcMarkSweepGC -Dfile.encoding=UTF-8"
+  env JAVA_OPTS="-Xmx512m -XX:MaxPermSize=256m -XX:+UseConcMarkSweepGC -Dfile.encoding=UTF-8"
  
  script
     exec {{tomcat_instance_dir}}/bin/catalina.sh run
