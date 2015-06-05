@@ -42,7 +42,7 @@
   template: src=tomcat-users.xml dest={{ tomcat_instance_dir }}/conf/ group="{{group}}" owner="{{user}}"
 
 - name: Install backbase properties file
-  templates: src=backbase.properties dest={{ tomcat_instance_dir }}/conf/ group="{{group}}" owner="{{user}}"
+  template: src=backbase.properties dest={{ tomcat_instance_dir }}/conf/ group="{{group}}" owner="{{user}}"
 
 
 #- name: cp setenv.sh to set jvm params
