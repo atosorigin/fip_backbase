@@ -47,6 +47,15 @@
 - name: reload services
   command: sudo initctl reload-configuration
 
+- name : Load contentservices server
+  file: src=contentservices.war dest={{ tomcat_instance_dir }}/webapps/ group="{{group}}" owner="{{user}}"
+
+- name : Load orchestrator server
+  file: src=orchestrator.war dest={{ tomcat_instance_dir }}/webapps/ group="{{group}}" owner="{{user}}"
+
+- name : Load portal server
+  file: src=portalserver.war dest={{ tomcat_instance_dir }}/webapps/ group="{{group}}" owner="{{user}}"
+
 - name: Start Tomcat
   service: name={{ tomcat_instance }} state=restarted enabled=yes
 
