@@ -52,13 +52,13 @@
   command: sudo initctl reload-configuration
 
 - name : Load contentservices server
-  copy: src=contentservices.war dest={{ tomcat_instance_dir }}/webapps/contentservices.war
+  copy: src=contentservices.war dest={{ tomcat_instance_dir }}/webapps/
 
 - name : Load orchestrator server
-  copy: src=orchestrator.war dest={{ tomcat_instance_dir }}/webapps/orchestrator.war
+  copy: src=orchestrator.war dest={{ tomcat_instance_dir }}/webapps/
 
 - name : Load portal server
-  copy: src=portalserver.war dest={{ tomcat_instance_dir }}/webapps/ROOT.war
+  copy: src=portalserver.war dest={{ tomcat_instance_dir }}/webapps/
 
 - name: Start Tomcat
   service: name={{ tomcat_instance }} state=restarted enabled=yes
