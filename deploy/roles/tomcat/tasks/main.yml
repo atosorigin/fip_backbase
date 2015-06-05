@@ -52,16 +52,16 @@
   command: sudo initctl reload-configuration
 
 - name : Load contentservices server
-  copy: src=contentservices.war dest={{ tomcat_instance_dir }}/webapps
+  copy: src=contentservices.war dest={{ tomcat_instance_dir }}/webapps group="{{group}}" owner="{{user}}
 
 - name : Load orchestrator server
-  copy: src=orchestrator.war dest={{ tomcat_instance_dir }}/webapps
+  copy: src=orchestrator.war dest={{ tomcat_instance_dir }}/webapps group="{{group}}" owner="{{user}}
 
 - name : Load portal server
-  copy: src=portalserver.war dest={{ tomcat_instance_dir }}/webapps
+  copy: src=portalserver.war dest={{ tomcat_instance_dir }}/webapps group="{{group}}" owner="{{user}}
 
 - name : Load mysql connector
-  copy: src=mysql-connector-java-5.1.35-bin.jar dest={{ tomcat_instance_dir }}/lib
+  copy: src=mysql-connector-java-5.1.35-bin.jar dest={{ tomcat_instance_dir }}/lib group="{{group}}" owner="{{user}}
 
 - name: Start Tomcat
   service: name={{ tomcat_instance }} state=restarted enabled=yes
