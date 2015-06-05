@@ -13,3 +13,4 @@
     - zip
     - openjdk-7-jdk
     - ldap-utils
+    - libmysql-java

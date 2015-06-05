@@ -68,7 +68,14 @@
     -->
      <Connector port="{{ tomcat_http_port }}" protocol="HTTP/1.1"
                connectionTimeout="20000"
-               redirectPort="{{ tomcat_https_port }}" />
+               URIEncoding="UTF-8"
+               redirectPort="{{ tomcat_https_port }}" 
+               compression="on"
+               compressionMinSize="2048"
+               noCompressionUserAgents="gozilla, traviata"
+               compressableMimeType="text/html,text/xml"
+      />
+
     <!-- A "Connector" using the shared thread pool-->
     <!--
     <Connector executor="tomcatThreadPool"
