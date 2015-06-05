@@ -33,6 +33,9 @@
   file: path={{tomcat_instance_dir}} state=directory
 
 - name: Configure Tomcat server
+  template: src=context.xml dest={{ tomcat_parent }}/{{ tomcat_instance }}/conf/ group={{owner}} owner={{user}}
+
+- name: Configure Tomcat server
   template: src=server.xml dest={{ tomcat_parent }}/{{ tomcat_instance }}/conf/ group={{owner}} owner={{user}}
 
 - name: Configure Tomcat users
