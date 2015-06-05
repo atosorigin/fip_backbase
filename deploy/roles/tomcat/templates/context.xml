@@ -21,7 +21,7 @@
     <!-- web application will be reloaded.                                   -->
     <WatchedResource>WEB-INF/web.xml</WatchedResource>
     <WatchedResource>${catalina.base}/conf/web.xml</WatchedResource>
-    <Environment name="backbase/config" value="${catalina.base}/webapps/portalserver/backbase.properties" type="java.lang.String" override="false" />
+    <Environment name="backbase/config" value="${catalina.base}/conf/backbase.properties" type="java.lang.String" override="false" />
     <!-- Uncomment this to disable session persistence across Tomcat restarts -->
     <!--
     <Manager pathname="" />

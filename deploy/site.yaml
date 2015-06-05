@@ -1,3 +1,14 @@
+- hosts: tag_class_{{env}}-bbdbserver
+  name: Deploy MySQL
+  vars_files:
+   - "vars/enc.yml"
+  remote_user: '{{remote_user}}'
+  roles: 
+    - install-base-apt
+    - create-user
+    - role : mysql
+  sudo: true
+
 - hosts: tag_class_{{env}}-bbwebserver
   name: Deploy Backbase web
   vars_files:
@@ -10,14 +21,4 @@
     tags: [tomcat, backbase]
     tomcat_base_port: 8000
     tomcat_instance: backbase
-  sudo: true
-- hosts: tag_class_{{env}}-bbdbserver
-  name: Deploy MySQL
-  vars_files:
-   - "vars/enc.yml"
-  remote_user: '{{remote_user}}'
-  roles: 
-    - install-base-apt
-    - create-user
-    - role : mysql
   sudo: true
