@@ -81,7 +81,7 @@
 
 
   - name: Drop schemas
-    mysql_db: state=import name={{item[0]}} target={{item[1]}} login_user=backbase login_password={{mysql_root_password}}
+    mysql_db: state=import name={{item[0]}} target=/tmp/{{item[1]}} login_user=backbase login_password={{mysql_root_password}}
     with_nested:
       - ['portal', 'portal_drop_schema.sql']
       - ['audit', 'audit_drop_schema.sql']
