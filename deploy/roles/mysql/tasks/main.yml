@@ -81,7 +81,7 @@
 
 
   - name: Drop schemas
-    mysql_db: state=import name={{item[0]}} target={{item[1]}}
+    mysql_db: state=import name={{item[0]}} target={{item[1]}} login_user=backbase login_password={{mysql_root_password}}
     with_nested:
       - ['portal', 'portal_drop_schema.sql']
       - ['audit', 'audit_drop_schema.sql']
@@ -93,7 +93,7 @@
       - ['tracking', 'tracking_drop_schema.sql']
 
   - name: Load schemas
-    mysql_db: state=import name={{item[0]}} target=/tmp/{{item[1]}}
+    mysql_db: state=import name={{item[0]}} target=/tmp/{{item[1]}} login_user=backbase login_password={{mysql_root_password}}
     with_nested:
       - ['portal', 'portal_schema.ddl']
       - ['audit', 'audit_schema.ddl']
