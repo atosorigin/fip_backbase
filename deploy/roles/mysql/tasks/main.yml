@@ -7,7 +7,7 @@
         - mysql-server
 
   - name : Install config file
-    copy : src="my.cnf" dest="/etc/mysql"
+    template : src="my.cnf" dest="/etc/mysql"
 
   - name: Start the MySQL service
     service: 
