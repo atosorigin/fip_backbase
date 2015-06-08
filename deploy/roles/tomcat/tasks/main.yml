@@ -45,7 +45,7 @@
   template: src=backbase.properties dest={{ tomcat_instance_dir }}/conf/ group="{{group}}" owner="{{user}}"
 
 - name: Make sure folders are present
-  file : path= {{item}} group="{{owner}}" owner="{{user}}" state=directory
+  file : path="{{item}}" group="{{owner}}" owner="{{user}}" state=directory
   with_items:
     - "{{tomcat_instance_dir}}/content"
     - "{{tomcat_instance_dir}}/configuration"
