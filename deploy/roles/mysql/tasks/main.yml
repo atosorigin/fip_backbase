@@ -88,28 +88,13 @@
 
   - name: Drop schemas
     mysql_db: state=import login_host={{ec2_private_ip_address}} name={{item[0]}} target=/tmp/{{item[1]}} login_user=backbase login_password={{mysql_root_password}}
-    with_nested:
-      - ['portal', 'portal_drop_schema.sql']
-      - ['audit', 'audit_drop_schema.sql']
-      - ['config', 'content_drop_schema.sql']
-      - ['content', 'content_drop_schema.sql']
-      - ['resource', 'content_drop_schema.sql']
-      - ['orchestr', 'orchestrator_drop_schema.sql']
-      - ['orchestr', 'archiving_drop_schema.sql']
-      - ['tracking', 'tracking_drop_schema.sql']
+    with_dict: "{{dbscripts}}"
 
   - name: Load schemas
     mysql_db: state=import login_host={{ec2_private_ip_address}} name={{item[0]}} target=/tmp/{{item[1]}} login_user=backbase login_password={{mysql_root_password}}
-    with_nested:
-      - ['portal', 'portal_schema.ddl']
-      - ['audit', 'audit_schema.ddl']
-      - ['config', 'content_schema.sql']
-      - ['content', 'content_schema.sql']
-      - ['resource', 'content_schema.sql']
-      - ['orchestr', 'orchestrator_schema.sql']
-      - ['orchestr', 'archiving_schema.sql']
-      - ['tracking', 'tracking_schema.ddl']
-      - ['portal', 'default-foundation-data-blank.sql']
+    with_dict: "{{dbscripts}}"
+
+  - mysql_db: state=import login_host={{ec2_private_ip_address}} name=portal target=/tmp/default-foundation-data-blank.sql login_user=backbase login_password={{mysql_root_password}}
 
  # - name: populuate databases
  #   mysql_db: state=import name=all target=/tmp/{{ inventory_hostname }}.sql
