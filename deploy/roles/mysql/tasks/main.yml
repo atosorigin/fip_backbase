@@ -46,7 +46,7 @@
       - "orchestr"
 
   - name: Create backbase backbase user
-    mysql_user: name=backbase password={{ mysql_root_password }} priv={{item}}.*:'backbase@bbweb{{base_domain}}' state=present login_user=root login_password={{ mysql_root_password }}
+    mysql_user: name=backbase password={{ mysql_root_password }} priv={{item}}.*:ALL state=present login_user=root login_password={{ mysql_root_password }}
     with_items:
       - "portal"
       - "audit"
