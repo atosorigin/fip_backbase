@@ -50,6 +50,7 @@
     - "{{tomcat_instance_dir}}/content"
     - "{{tomcat_instance_dir}}/configuration"
     - "{{tomcat_instance_dir}}/resources"
+    - "{{tomcat_instance_dir}}/orchestrator"
 
 #- name: cp setenv.sh to set jvm params
 #  copy: src=setenv.sh dest="{{ tomcat_instance_dir }}/bin"
