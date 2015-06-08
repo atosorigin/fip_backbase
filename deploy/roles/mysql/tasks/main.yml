@@ -30,6 +30,7 @@
      - 127.0.0.1
      - ::1
      - localhost
+     - bbweb{{base_domain}}
 
   - name: Create backbase backbase user
     mysql_user: name=backbase password={{ mysql_root_password }} priv=*.*:ALL state=present login_user=root login_password={{ mysql_root_password }}
