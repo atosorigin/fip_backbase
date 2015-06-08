@@ -60,14 +60,14 @@
   - name: Copy files
     copy: src={{item}} dest=/tmp/{{item}}
     with_items:
-      - 'portal_schema.sql'
-      - 'audit_schema.sql'
+      - 'portal_schema.ddl'
+      - 'audit_schema.ddl'
       - 'content_schema.sql'
       - 'content_schema.sql'
       - 'content_schema.sql'
       - 'orchestrator_schema.sql'
       - 'archiving_schema.sql'
-      - 'tracking_schema.sql'
+      - 'tracking_schema.ddl'
       - 'portal_drop_schema.sql'
       - 'audit_drop_schema.sql'
       - 'content_drop_schema.sql'
@@ -95,14 +95,14 @@
   - name: Load schemas
     mysql_db: state=import name={{item[0]}} target=/tmp/{{item[1]}}
     with_nested:
-      - ['portal', 'portal_schema.sql']
-      - ['audit', 'audit_schema.sql']
+      - ['portal', 'portal_schema.ddl']
+      - ['audit', 'audit_schema.ddl']
       - ['config', 'content_schema.sql']
       - ['content', 'content_schema.sql']
       - ['resource', 'content_schema.sql']
       - ['orchestr', 'orchestrator_schema.sql']
       - ['orchestr', 'archiving_schema.sql']
-      - ['tracking', 'tracking_schema.sql']
+      - ['tracking', 'tracking_schema.ddl']
       - ['portal', 'default-foundation-data-blank.sql']
 
  # - name: populuate databases
