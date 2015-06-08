@@ -18,9 +18,6 @@ dbscripts:
   orchestr:
     up: orchestrator_schema.sql
     down: orchestrator_drop_schema.sql
-  orchestr:
-    up: archiving_schema.sql
-    down: archiving_drop_schema.sql
   tracking:
     up: tracking_schema.sql
     down: tracking_drop_schema.sql
