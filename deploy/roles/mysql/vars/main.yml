@@ -1,0 +1,8 @@
+---
+dbscripts:
+  portal:
+    up: portal_schema.sql
+    down: portal_drop_schema.sql
+  audit:
+    up: audit_schema.sql
+    down: audit_drop_schema.sql
