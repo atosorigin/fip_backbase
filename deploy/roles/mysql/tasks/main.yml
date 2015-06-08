@@ -9,6 +9,9 @@
   - name : Install config file
     template : src="my.cnf" dest="/etc/mysql"
 
+  - name : Own some folders
+    file: src=/var/lib/mysql group="{{owner}}" owner="{{user}}" recurse=yes state=directory
+
   - name: Start the MySQL service
     service: 
       name: mysql 
