@@ -25,7 +25,7 @@
      - localhost
 
   - name: Create backbase backbase user
-    mysql_user: name=backbase password={{ mysql_root_password }} priv=*.*:ALL state=present
+    mysql_user: name=backbase password={{ mysql_root_password }} priv=*.*:ALL state=present login_user=root login_password={{ mysql_root_password }}
 
   - name: Create Database
     mysql_db: login_user=backbase login_password={{ mysql_root_password }} name={{item}} state=present
