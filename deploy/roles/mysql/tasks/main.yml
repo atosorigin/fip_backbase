@@ -1,4 +1,6 @@
 ---    
+  - include: ../vars/all.yml
+
   - name: Install MySQL
     apt: 
       name: "{{ item }}"
