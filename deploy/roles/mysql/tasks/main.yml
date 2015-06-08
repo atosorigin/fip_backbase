@@ -44,6 +44,7 @@
       - "content"
       - "resource"
       - "orchestr"
+      - "tracking"
 
   - name: Create backbase backbase user
     mysql_user: name=backbase password={{ mysql_root_password }} priv={{item}}.*:ALL state=present login_user=root login_password={{ mysql_root_password }}
@@ -54,7 +55,55 @@
       - "content"
       - "resource"
       - "orchestr"
+      - "tracking"
 
+  - name: Copy files
+    copy: src={{item}} dest=/tmp/{{item}}
+    with_items:
+      - 'portal_schema.sql'
+      - 'audit_schema.sql'
+      - 'content_schema.sql'
+      - 'content_schema.sql'
+      - 'content_schema.sql'
+      - 'orchestrator_schema.sql'
+      - 'archiving_schema.sql'
+      - 'tracking_schema.sql'
+      - 'portal_drop_schema.sql'
+      - 'audit_drop_schema.sql'
+      - 'content_drop_schema.sql'
+      - 'content_drop_schema.sql'
+      - 'content_drop_schema.sql'
+      - 'orchestrator_drop_schema.sql'
+      - 'archiving_drop_schema.sql'
+      - 'tracking_drop_schema.sql'
+      - 'default-foundation-data-blank.sql'
+
+
+
+  - name: Drop schemas
+    mysql_db: state=import name={{item[0]}} target={{item[1]}}
+    with_nested:
+      - ['portal', 'portal_drop_schema.sql']
+      - ['audit', 'audit_drop_schema.sql']
+      - ['config', 'content_drop_schema.sql']
+      - ['content', 'content_drop_schema.sql']
+      - ['resource', 'content_drop_schema.sql']
+      - ['orchestr', 'orchestrator_drop_schema.sql']
+      - ['orchestr', 'archiving_drop_schema.sql']
+      - ['tracking', 'tracking_drop_schema.sql']
+
+  - name: Load schemas
+    mysql_db: state=import name={{item[0]}} target=/tmp/{{item[1]}}
+    with_nested:
+      - ['portal', 'portal_schema.sql']
+      - ['audit', 'audit_schema.sql']
+      - ['config', 'content_schema.sql']
+      - ['content', 'content_schema.sql']
+      - ['resource', 'content_schema.sql']
+      - ['orchestr', 'orchestrator_schema.sql']
+      - ['orchestr', 'archiving_schema.sql']
+      - ['tracking', 'tracking_schema.sql']
+      - ['portal', 'default-foundation-data-blank.sql']
 
  # - name: populuate databases
  #   mysql_db: state=import name=all target=/tmp/{{ inventory_hostname }}.sql
