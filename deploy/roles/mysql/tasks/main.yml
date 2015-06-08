@@ -45,6 +45,17 @@
       - "resource"
       - "orchestr"
 
+  - name: Create backbase backbase user
+    mysql_user: name=backbase password={{ mysql_root_password }} priv={{item}}.*:'backbase@bbweb{{base_domain}}' state=present login_user=root login_password={{ mysql_root_password }}
+    with_items:
+      - "portal"
+      - "audit"
+      - "config"
+      - "content"
+      - "resource"
+      - "orchestr"
+
+
  # - name: populuate databases
  #   mysql_db: state=import name=all target=/tmp/{{ inventory_hostname }}.sql
 
