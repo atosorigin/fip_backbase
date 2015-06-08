@@ -86,6 +86,9 @@
       - 'default-foundation-data-blank.sql'
 
 
+  - name: Drop schemas
+    mysql_db: state=import name=portal target=/tmp/portal_drop_schema.sql login_user=backbase login_password={{mysql_root_password}}
+
 
   - name: Drop schemas
     mysql_db: state=import name={{item[0]}} target=/tmp/{{item[1]}} login_user=backbase login_password={{mysql_root_password}}
