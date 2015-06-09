@@ -1,8 +1,8 @@
 ---
-users:
-  leegath:
-    name: leegath
-    sshkey: ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDAuwK8jmR8RUWL/kjkOZSL7NMw5TmpT+p31AroZ1HZr3/yeVIz/KwW6s5n+gZLW7yL4WAMAmoDHEBxzWAMhdLpGU3kDVjSxWvtIabG543fOi+I/5ZBHGDXavTEfwGPTKIF9BRt00u9wne2fnp+PMvUxPv+Nm+CW7dV1BnsMGG55N1sbWqvtSvC2ETGsxNLsitwIgXFltv1fIeq/E6oSH5O60xG136X3+r7jP/OJv8lEw9re3Fa4Yb0Vz7j6xj5NMwVBhp3iihA3UscPidjDRQX8NmrxnF23GYuN4UJsfzbJ6KGUkY25wyzsIM06P8NwdKBgkZfK+FVNXFXi8kRDyU/ leegath@Lees-MacBook-Pro.local
-  ianjohn:
-    name: ianjohn
-    sshkey: ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC1P7F0A+ecUlmF8YYO41JAI+kX9ESNSmtZj+TsrYARsrgIg3wxMGFTnQm7rypfixY8M5QyNuh5TdD/JZuAcFMledVaPrmXeRCUK3WrnAV0CFkDueb0uJetkMVzDrv5jrk0Ed8rnfBJ+H0B+QA4qs60ICOh0c8tCLiMYX+84mwG4V1yDUZlq8jelQa6ks9Hy6vMqSvcmoWYCF1N/PCEGEvAJrqiY3Y2FWLbN80e9T7809jn2s26IcUZntqy+07rUhO9306fy74GXBpcnAKDLqa3MzNDCj/EZPHV0Ad8VFF1a7smlvxSspdRwBXtcOGGJeAO5727TWAJ12IHzI6Axi7h ian.john@atos.net
+dbscripts:
+  portal:
+    up: "portal_schema.sql"
+    down: "portal_drop_schema.sql"
+  audit:
+    up: "audit_schema.sql"
+    down: "audit_drop_schema.sql"
