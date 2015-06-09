@@ -87,11 +87,11 @@
 
 
   - name: Drop schemas
-    mysql_db: state=import login_host={{ec2_private_ip_address}} name={{item.key}} target=/tmp/{{item.down}} login_user=backbase login_password={{mysql_root_password}}
+    mysql_db: state=import login_host={{ec2_private_ip_address}} name={{item.key}} target=/tmp/{{item.value.down}} login_user=backbase login_password={{mysql_root_password}}
     with_dict: dbscripts
 
   - name: Load schemas
-    mysql_db: state=import login_host={{ec2_private_ip_address}} name={{item.key}} target=/tmp/{{item.up}} login_user=backbase login_password={{mysql_root_password}}
+    mysql_db: state=import login_host={{ec2_private_ip_address}} name={{item.key}} target=/tmp/{{item.value.up}} login_user=backbase login_password={{mysql_root_password}}
     with_dict: dbscripts
 
   - mysql_db: state=import login_host={{ec2_private_ip_address}} name=portal target=/tmp/default-foundation-data-blank.sql login_user=backbase login_password={{mysql_root_password}}
