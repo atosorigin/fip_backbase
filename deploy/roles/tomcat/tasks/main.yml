@@ -96,5 +96,5 @@
 - copy: src=contentservices.zip dest={{tomcat_instance_dir}}/portal/import
 
 - name: import portal
-  java -jar {{tomcat_instance_dir}}/tools/importer-5.5.1.1-jar-with-dependencies.jar -m import -u admin -p admin -s http://localhost:8080/portalserver
+  command: java -jar {{tomcat_instance_dir}}/tools/importer-5.5.1.1-jar-with-dependencies.jar -m import -u admin -p admin -s http://localhost:8080/portalserver
 
