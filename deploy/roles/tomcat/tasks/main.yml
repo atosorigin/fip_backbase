@@ -51,6 +51,8 @@
     - "{{tomcat_instance_dir}}/configuration"
     - "{{tomcat_instance_dir}}/resources"
     - "{{tomcat_instance_dir}}/orchestrator"
+    - "{{tomcat_instance_dir}}/portal"
+    - "{{tomcat_instance_dir}}/portal/import"
 
 - name : Load publish services
   copy: src=to-self-publishchains.xml dest="{{ tomcat_instance_dir }}/orchestrator" group="{{group}}" owner="{{user}}"
