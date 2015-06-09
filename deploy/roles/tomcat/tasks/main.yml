@@ -53,6 +53,7 @@
     - "{{tomcat_instance_dir}}/orchestrator"
     - "{{tomcat_instance_dir}}/portal"
     - "{{tomcat_instance_dir}}/portal/import"
+    - "{{tomcat_instance_dir}}/tools"
 
 - name : Load publish services
   copy: src=to-self-publishchains.xml dest="{{ tomcat_instance_dir }}/orchestrator" group="{{group}}" owner="{{user}}"
@@ -77,7 +78,11 @@
   copy: src=portalserver.war dest="{{ tomcat_instance_dir }}/webapps" group="{{group}}" owner="{{user}}"
 
 - name : Load mysql connector
-  copy: src=mysql-connector-java-5.1.35-bin.jar dest="{{ tomcat_instance_dir }}/lib" group="{{group}}" owner="{{user}}"
+  copy: src=mysql-connector-java-5.1.35-bin.jar dest="{{ tomcat_instance_dir }}/tools" group="{{group}}" owner="{{user}}"
+
+- name : Load importer connector
+  copy: src=importer-5.5.1.0-jar-with-dependencies.jar dest="{{ tomcat_instance_dir }}/lib" group="{{group}}" owner="{{user}}"
+
 
 - name: Start Tomcat
   service: name={{ tomcat_instance }} state=restarted enabled=yes
@@ -89,3 +94,7 @@
   copy: src=portalserver.xml dest={{tomcat_instance_dir}}/portal/import
 
 - copy: src=contentservices.zip dest={{tomcat_instance_dir}}/portal/import
+
+- name: import portal
+  java -jar {{tomcat_instance_dir}}/tools/importer-5.5.1.1-jar-with-dependencies.jar -m import -u admin -p admin -s http://localhost:8080/portalserver
+
