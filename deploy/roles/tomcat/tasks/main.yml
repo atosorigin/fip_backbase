@@ -82,3 +82,6 @@
 
 - name: wait for tomcat to start
   wait_for: port={{ tomcat_http_port }} delay=10
+
+- name: Put file ready for import
+  copy src=Portal-retail-banking-09d38aad-b072-4690-b66b-13389ea8a8d3.zip dest={{tomcat_instance_dir}}/import
