@@ -78,11 +78,10 @@
   copy: src=portalserver.war dest="{{ tomcat_instance_dir }}/webapps" group="{{group}}" owner="{{user}}"
 
 - name : Load mysql connector
-  copy: src=mysql-connector-java-5.1.35-bin.jar dest="{{ tomcat_instance_dir }}/tools" group="{{group}}" owner="{{user}}"
+  copy: src=mysql-connector-java-5.1.35-bin.jar dest="{{ tomcat_instance_dir }}/lib" group="{{group}}" owner="{{user}}"
 
 - name : Load importer connector
-  copy: src=importer-5.5.1.0-jar-with-dependencies.jar dest="{{ tomcat_instance_dir }}/lib" group="{{group}}" owner="{{user}}"
-
+  copy: src=importer-5.5.1.0-jar-with-dependencies.jar dest="{{ tomcat_instance_dir }}/tools" group="{{group}}" owner="{{user}}"
 
 - name: Start Tomcat
   service: name={{ tomcat_instance }} state=restarted enabled=yes
