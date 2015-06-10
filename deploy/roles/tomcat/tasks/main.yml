@@ -94,8 +94,8 @@
 
 - copy: src=contentservices.zip dest={{tomcat_instance_dir}}/portal/import
 
-- copy: src=importPortal.xml dest={{tomcat_instance_dir}}/portal/import
+#- copy: src=importPortal.xml dest={{tomcat_instance_dir}}/portal/import
 
-- name: import portal
-  command: java -jar {{tomcat_instance_dir}}/tools/importer-5.5.1.0-jar-with-dependencies.jar -m import -u admin -p admin -s http://bbweb{{base_domain}}/portalserver
+#- name: import portal
+#  command: java -jar {{tomcat_instance_dir}}/tools/importer-5.5.1.0-jar-with-dependencies.jar -m import -u admin -p admin -s http://bbweb{{base_domain}}/portalserver
 
