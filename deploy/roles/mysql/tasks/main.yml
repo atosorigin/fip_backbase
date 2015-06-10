@@ -52,6 +52,7 @@
       - "resource"
       - "orchestr"
       - "tracking"
+      - "integration"
 
   - name: Create backbase backbase user
     mysql_user: name=backbase password={{ mysql_root_password }} priv={{item}}.*:ALL state=present login_user=root login_password={{ mysql_root_password }}
@@ -63,6 +64,7 @@
       - "resource"
       - "orchestr"
       - "tracking"
+      - "integration"
 
   - name: Copy files
     copy: src={{item}} dest=/tmp/{{item}}
