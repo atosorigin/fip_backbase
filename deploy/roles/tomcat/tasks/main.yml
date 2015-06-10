@@ -75,7 +75,7 @@
   copy: src=orchestrator.war dest="{{ tomcat_instance_dir }}/webapps" group="{{group}}" owner="{{user}}"
 
 - name : Load portal server
-  copy: src=portalserver.war dest="{{ tomcat_instance_dir }}/webapps" group="{{group}}" owner="{{user}}"
+  copy: src=fip_retailbanking.war dest="{{ tomcat_instance_dir }}/webapps/portalserver.war" group="{{group}}" owner="{{user}}"
 
 - name : Load mysql connector
   copy: src=mysql-connector-java-5.1.35-bin.jar dest="{{ tomcat_instance_dir }}/lib" group="{{group}}" owner="{{user}}"
