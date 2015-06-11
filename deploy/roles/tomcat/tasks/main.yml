@@ -58,24 +58,11 @@
 - name : Load publish services
   copy: src=to-self-publishchains.xml dest="{{ tomcat_instance_dir }}/orchestrator" group="{{group}}" owner="{{user}}"
 
-
-#- name: cp setenv.sh to set jvm params
-#  copy: src=setenv.sh dest="{{ tomcat_instance_dir }}/bin"
-
 - name: Install Tomcat init script
   template: src=tomcat.service  dest=/etc/init/{{tomcat_instance}}.conf mode=u+rw
 
 - name: reload services
   command: sudo initctl reload-configuration
-
-- name : Load contentservices server
-  copy: src=contentservices.war dest="{{ tomcat_instance_dir }}/webapps" group="{{group}}" owner="{{user}}"
-
-- name : Load orchestrator server
-  copy: src=orchestrator.war dest="{{ tomcat_instance_dir }}/webapps" group="{{group}}" owner="{{user}}"
-
-- name : Load portal server
-  copy: src=fip_retailbanking.war dest="{{ tomcat_instance_dir }}/webapps/portalserver.war" group="{{group}}" owner="{{user}}"
 
 - name : Load mysql connector
   copy: src=mysql-connector-java-5.1.35-bin.jar dest="{{ tomcat_instance_dir }}/lib" group="{{group}}" owner="{{user}}"
@@ -88,14 +75,3 @@
 
 - name: wait for tomcat to start
   wait_for: port={{ tomcat_http_port }} delay=10
-
-- name: Put file ready for import
-  copy: src=portalserver.xml dest={{tomcat_instance_dir}}/portal/import
-
-- copy: src=contentservices.zip dest={{tomcat_instance_dir}}/portal/import
-
-#- copy: src=importPortal.xml dest={{tomcat_instance_dir}}/portal/import
-
-#- name: import portal
-#  command: java -jar {{tomcat_instance_dir}}/tools/importer-5.5.1.0-jar-with-dependencies.jar -m import -u admin -p admin -s http://bbweb{{base_domain}}/portalserver
-
