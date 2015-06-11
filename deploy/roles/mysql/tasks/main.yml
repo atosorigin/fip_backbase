@@ -33,7 +33,7 @@
      - localhost
 
   - name : Install config file
-    template : src=".my.cnf" dest="/root/.my.cnf"
+    template : src=".my.cnf" dest="/root/.my.cnf" owner=root mode=0600
 
 
   - name: Create backbase backbase user
