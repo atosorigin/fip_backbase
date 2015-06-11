@@ -21,8 +21,9 @@
       state: started
       enabled: true
 
+
   - name: update mysql root password for all root accounts
-    mysql_user: name=root password={{ mysql_root_password }}  check_implicit_admin=yes priv=*.*:ALL,GRANT host={{ item }} state=present
+    mysql_user: name=root host={{ item }} password={{ mysql_root_password }} priv=*.*:ALL,GRANT
     with_items:
      - "{{ ansible_hostname }}"
      - bbdb{{base_domain}}
