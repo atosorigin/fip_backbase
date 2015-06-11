@@ -22,13 +22,8 @@
       enabled: true
 
   - name: update mysql root password for all root accounts
-    mysql_user: login_user=root login_password='' name=root host={{ item }} password={{ mysql_root_password }} priv=*.*:ALL,GRANT
+    mysql_user: name=root host={{ item }} password={{ mysql_root_password }} priv=*.*:ALL,GRANT login_user=root login_password='' 
     with_items:
-     - "{{ ansible_hostname }}"
-     - bbdb{{base_domain}}
-     - 127.0.0.1
-     - ::1
-     - bbweb{{base_domain}}
      - localhost
 
   - name : Install config file
