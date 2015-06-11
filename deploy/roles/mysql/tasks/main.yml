@@ -9,6 +9,9 @@
   - name : Install config file
     template : src="my.cnf" dest="/etc/mysql"
 
+  - name : Install config file
+    template : src=".my.cnf" dest="~/.my.cnf"
+
   - name : Own some folders
     file: path={{item}} group="{{owner}}" owner="{{user}}" recurse=yes state=directory
     with_items:
